@@ -22,6 +22,8 @@
 
 #  ifdef XP_WIN
 #    ifdef JS_ENABLE_UWP
+#      define UNICODE
+#      include <Windows.h>
 #      include <processthreadsapi.h>
 #      define getpid GetCurrentProcessId
 #    else
@@ -79,7 +81,7 @@ namespace js {
 #  define STRUCTURED_CHANNEL_LIST(_) \
     _(BaselineICStats)               \
     _(ScriptStats)                   \
-    _(RateMyCacheIR)
+    _(CacheIRHealthReport)
 
 // Structured spew channels
 enum class SpewChannel {

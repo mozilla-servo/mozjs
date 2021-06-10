@@ -11,24 +11,12 @@
 #  include "mozilla/Atomics.h"
 #  include "mozilla/Sprintf.h"
 
-#  ifdef XP_WIN
-#    ifdef JS_ENABLE_UWP
-#      define UNICODE
-#      include <Windows.h>
-#      include <processthreadsapi.h>
-#      define getpid GetCurrentProcessId
-#    else
-#      include <process.h>
-#      define getpid _getpid
-#    endif
-#  else
-#    include <unistd.h>
-#  endif
 #  include "jit/Ion.h"
 #  include "jit/MIR.h"
 #  include "jit/MIRGenerator.h"
 #  include "jit/MIRGraph.h"
 #  include "threading/LockGuard.h"
+#  include "util/GetPidProvider.h"  // getpid()
 #  include "util/Text.h"
 #  include "vm/HelperThreads.h"
 #  include "vm/MutexIDs.h"
